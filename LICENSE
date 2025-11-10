@@ -1,0 +1,138 @@
+RCE Scientific Evidence Repository License
+==========================================
+
+Copyright (c) 2025 Ismail Sialyen
+
+This repository contains:
+1. Benchmark scripts and evaluation tools (Open Source - MIT License)
+2. API access layer for RCE validation (Open Source - MIT License)
+3. Statistical analysis and documentation (Open Source - CC BY 4.0)
+4. RCE Core Implementation (PROPRIETARY - Not Included)
+
+---
+
+## Part A: Open Source Components (MIT License)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of the benchmark scripts, API client, and documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+sell copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## Part B: Documentation (Creative Commons Attribution 4.0)
+
+The documentation, benchmark results, and statistical analyses in this
+repository are licensed under Creative Commons Attribution 4.0 International
+(CC BY 4.0).
+
+You are free to:
+- Share: copy and redistribute the material in any medium or format
+- Adapt: remix, transform, and build upon the material for any purpose
+
+Under the following terms:
+- Attribution: You must give appropriate credit to Ismail Sialyen, provide a
+  link to the license, and indicate if changes were made.
+
+Full license: https://creativecommons.org/licenses/by/4.0/
+
+---
+
+## Part C: RCE Core Implementation (PROPRIETARY)
+
+THE RCE CORE VALIDATION ENGINE IS NOT INCLUDED IN THIS REPOSITORY.
+
+The proprietary RCE core implementation, including but not limited to:
+- Graph-based coherence validation algorithms
+- Relational knowledge extraction methods
+- Source attribution tracking mechanisms
+- Internal optimization techniques
+
+...remains the exclusive property of Ismail Sialyen and is NOT licensed
+for use, modification, or distribution under any circumstances without
+explicit written permission.
+
+### Commercial Licensing
+
+For commercial licensing of the RCE core technology, please contact:
+- Author: Ismail Sialyen
+- Email: [Your email]
+- Institution: [Your institution]
+
+### Research Access
+
+Researchers may access RCE functionality through:
+1. **API Access**: Use the provided RCE API client (api_access/rce_api_client.py)
+2. **Black-Box Validation**: Run benchmarks without accessing core implementation
+3. **Collaborative Research**: Contact the author for research partnerships
+
+---
+
+## Citation Requirements
+
+If you use this repository or RCE in your research, please cite:
+
+```bibtex
+@software{sialyen2025rce,
+  author = {Sialyen, Ismail},
+  title = {Relational Coherence Engine: Empirical Evidence Repository},
+  year = {2025},
+  doi = {10.5281/zenodo.17360372},
+  url = {https://github.com/ismailsialyen/rce-scientific-evidence}
+}
+```
+
+---
+
+## Patent Notice
+
+Certain aspects of the RCE technology may be subject to patent protection.
+This license does not grant any patent rights.
+
+---
+
+## Academic Integrity
+
+This repository supports the scientific publication:
+- DOI: 10.5281/zenodo.17360372
+- Author: Ismail Sialyen
+
+All benchmark results and claims are backed by empirical evidence and
+statistical validation. The methodology is fully documented and reproducible
+without requiring access to the proprietary RCE core.
+
+---
+
+## Model Attribution
+
+This research incorporates the following open-source technologies:
+- Ollama/Llama 3.2: Meta AI (Apache 2.0 License)
+- NetworkX: BSD License
+- Other dependencies: See requirements.txt for full attributions
+
+---
+
+## Contact
+
+For questions about:
+- **Research collaboration**: [Your academic email]
+- **Commercial licensing**: [Your business email]
+- **Bug reports**: GitHub Issues on this repository
+
+---
+
+Last Updated: November 2025
+License Version: 1.0

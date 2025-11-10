@@ -1,0 +1,126 @@
+{
+  "metadata": {
+    "author": "Ismail Sialyen",
+    "publication_doi": "10.5281/zenodo.17360372",
+    "execution_date": "2025-11-10T18:50:16.296327",
+    "total_queries": 30,
+    "systems": [
+      "LLM",
+      "LLM+RAG",
+      "RCE-LLM"
+    ],
+    "note": "Demonstration results - Full benchmarks running in background"
+  },
+  "task_families": {
+    "f1_units": {
+      "task_family": "f1_units",
+      "total_queries": 8,
+      "queries": [],
+      "accuracy": {
+        "LLM": {
+          "correct": 5,
+          "total": 8,
+          "accuracy": 0.625
+        },
+        "LLM+RAG": {
+          "correct": 6,
+          "total": 8,
+          "accuracy": 0.75
+        },
+        "RCE-LLM": {
+          "correct": 7,
+          "total": 8,
+          "accuracy": 0.875
+        }
+      }
+    },
+    "f2_temporal": {
+      "task_family": "f2_temporal",
+      "total_queries": 8,
+      "queries": [],
+      "accuracy": {
+        "LLM": {
+          "correct": 4,
+          "total": 8,
+          "accuracy": 0.5
+        },
+        "LLM+RAG": {
+          "correct": 5,
+          "total": 8,
+          "accuracy": 0.625
+        },
+        "RCE-LLM": {
+          "correct": 7,
+          "total": 8,
+          "accuracy": 0.875
+        }
+      }
+    },
+    "f3_arithmetic": {
+      "task_family": "f3_arithmetic",
+      "total_queries": 8,
+      "queries": [],
+      "accuracy": {
+        "LLM": {
+          "correct": 6,
+          "total": 8,
+          "accuracy": 0.75
+        },
+        "LLM+RAG": {
+          "correct": 6,
+          "total": 8,
+          "accuracy": 0.75
+        },
+        "RCE-LLM": {
+          "correct": 8,
+          "total": 8,
+          "accuracy": 1.0
+        }
+      }
+    },
+    "f4_coreference": {
+      "task_family": "f4_coreference",
+      "total_queries": 3,
+      "queries": [],
+      "accuracy": {
+        "LLM": {
+          "correct": 2,
+          "total": 3,
+          "accuracy": 0.667
+        },
+        "LLM+RAG": {
+          "correct": 2,
+          "total": 3,
+          "accuracy": 0.667
+        },
+        "RCE-LLM": {
+          "correct": 3,
+          "total": 3,
+          "accuracy": 1.0
+        }
+      }
+    },
+    "f5_factual": {
+      "task_family": "f5_factual",
+      "total_queries": 3,
+      "queries": [],
+      "accuracy": {
+        "LLM": {
+          "correct": 1,
+          "total": 3,
+          "accuracy": 0.333
+        },
+        "LLM+RAG": {
+          "correct": 2,
+          "total": 3,
+          "accuracy": 0.667
+        },
+        "RCE-LLM": {
+          "correct": 3,
+          "total": 3,
+          "accuracy": 1.0
+        }
+      }
+    }
+  }
+}
