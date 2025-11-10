@@ -63,8 +63,8 @@ Question-answering tasks requiring specific URL citations with entailment verifi
 
 Aligned with publication Table 1 (page 12):
 
-1. **LLM:** Vanilla Llama 3.2 with standard decoding (no retrieval, no validation)
-2. **LLM+RAG:** Retrieval-augmented generation with DuckDuckGo search + Llama 3.2
+1. **LLM:** Groq (Llama 3.3 70B) via Groq Cloud API (no retrieval, no validation)
+2. **LLM+RAG:** Retrieval-augmented generation with DuckDuckGo search + Groq (Llama 3.3 70B)
 3. **RCE-LLM:** Full end-to-end relational coherence optimization (publication Algorithm 1)
 
 ---

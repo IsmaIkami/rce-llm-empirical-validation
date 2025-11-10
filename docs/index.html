@@ -351,7 +351,7 @@
                     <div class="stat-label">Baseline Systems</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-value">93.3%</div>
+                    <div class="stat-value">100.0%</div>
                     <div class="stat-label">RCE-LLM Accuracy</div>
                 </div>
             </div>
@@ -365,9 +365,9 @@
                     <h4>H₁: RCE-LLM > LLM</h4>
                     <div class="hypothesis-status">✓ SUPPORTED</div>
                     <div class="hypothesis-details">
-                        Improvement: +55.5%<br>
-                        RCE-LLM: 93.3%<br>
-                        LLM: 60.0%
+                        Improvement: +3.4%<br>
+                        RCE-LLM: 100.0%<br>
+                        LLM: 96.7%
                     </div>
                 </div>
 
@@ -375,9 +375,9 @@
                     <h4>H₂: RCE-LLM > LLM+RAG</h4>
                     <div class="hypothesis-status">✓ SUPPORTED</div>
                     <div class="hypothesis-details">
-                        Improvement: +33.3%<br>
-                        RCE-LLM: 93.3%<br>
-                        LLM+RAG: 70.0%
+                        Improvement: +7.2%<br>
+                        RCE-LLM: 100.0%<br>
+                        LLM+RAG: 93.3%
                     </div>
                 </div>
 
@@ -417,22 +417,22 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>LLM (Llama 3.2)</strong></td>
-                        <td>18</td>
+                        <td><strong>LLM (Groq Llama 3.3 70B)</strong></td>
+                        <td>29</td>
                         <td>30</td>
-                        <td class="accuracy-medium">60.0%</td>
+                        <td class="accuracy-high">96.7%</td>
                     </tr>
                     <tr>
-                        <td><strong>LLM+RAG</strong></td>
-                        <td>21</td>
-                        <td>30</td>
-                        <td class="accuracy-high">70.0%</td>
-                    </tr>
-                    <tr style="background-color: #f0f4ff;">
-                        <td><strong>RCE-LLM</strong></td>
+                        <td><strong>LLM+RAG (Groq + DuckDuckGo)</strong></td>
                         <td>28</td>
                         <td>30</td>
                         <td class="accuracy-high">93.3%</td>
+                    </tr>
+                    <tr style="background-color: #f0f4ff;">
+                        <td><strong>RCE-LLM (Full Coherence Pipeline)</strong></td>
+                        <td>30</td>
+                        <td>30</td>
+                        <td class="accuracy-high">100.0%</td>
                     </tr>
                 </tbody>
             </table>
@@ -453,29 +453,25 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     <tr>
-                        <td><strong>LLM</strong></td>
-                        <td>5</td>
-                        <td>8</td>
-                        <td class="accuracy-medium">62.5%</td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>LLM+RAG</strong></td>
-                        <td>6</td>
-                        <td>8</td>
-                        <td class="accuracy-high">75.0%</td>
-                    </tr>
-
-                    <tr style="background-color: #f0f4ff;">
-                        <td><strong>RCE-LLM</strong></td>
+                        <td><strong>LLM (Groq)</strong></td>
                         <td>7</td>
                         <td>8</td>
                         <td class="accuracy-high">87.5%</td>
                     </tr>
-
-            </tbody>
+                    <tr>
+                        <td><strong>LLM+RAG</strong></td>
+                        <td>8</td>
+                        <td>8</td>
+                        <td class="accuracy-high">100.0%</td>
+                    </tr>
+                    <tr style="background-color: #f0f4ff;">
+                        <td><strong>RCE-LLM</strong></td>
+                        <td>8</td>
+                        <td>8</td>
+                        <td class="accuracy-high">100.0%</td>
+                    </tr>
+                </tbody>
             </table>
 
             <h3>F2: Temporal Reasoning</h3>
@@ -491,24 +487,22 @@
                 <tbody>
 
                     <tr>
-                        <td><strong>LLM</strong></td>
-                        <td>4</td>
-                        <td>8</td>
-                        <td class="accuracy-medium">50.0%</td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>LLM+RAG</strong></td>
-                        <td>5</td>
-                        <td>8</td>
-                        <td class="accuracy-medium">62.5%</td>
-                    </tr>
-
-                    <tr style="background-color: #f0f4ff;">
-                        <td><strong>RCE-LLM</strong></td>
+                        <td><strong>LLM (Groq)</strong></td>
                         <td>7</td>
                         <td>8</td>
                         <td class="accuracy-high">87.5%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LLM+RAG</strong></td>
+                        <td>6</td>
+                        <td>8</td>
+                        <td class="accuracy-high">75.0%</td>
+                    </tr>
+                    <tr style="background-color: #f0f4ff;">
+                        <td><strong>RCE-LLM</strong></td>
+                        <td>8</td>
+                        <td>8</td>
+                        <td class="accuracy-high">100.0%</td>
                     </tr>
 
             </tbody>
@@ -527,19 +521,17 @@
                 <tbody>
 
                     <tr>
-                        <td><strong>LLM</strong></td>
-                        <td>6</td>
+                        <td><strong>LLM (Groq)</strong></td>
+                        <td>7</td>
                         <td>8</td>
-                        <td class="accuracy-high">75.0%</td>
+                        <td class="accuracy-high">87.5%</td>
                     </tr>
-
                     <tr>
                         <td><strong>LLM+RAG</strong></td>
                         <td>6</td>
                         <td>8</td>
                         <td class="accuracy-high">75.0%</td>
                     </tr>
-
                     <tr style="background-color: #f0f4ff;">
                         <td><strong>RCE-LLM</strong></td>
                         <td>8</td>
@@ -563,19 +555,17 @@
                 <tbody>
 
                     <tr>
-                        <td><strong>LLM</strong></td>
-                        <td>2</td>
+                        <td><strong>LLM (Groq)</strong></td>
                         <td>3</td>
-                        <td class="accuracy-medium">66.7%</td>
+                        <td>3</td>
+                        <td class="accuracy-high">100.0%</td>
                     </tr>
-
                     <tr>
                         <td><strong>LLM+RAG</strong></td>
-                        <td>2</td>
                         <td>3</td>
-                        <td class="accuracy-medium">66.7%</td>
+                        <td>3</td>
+                        <td class="accuracy-high">100.0%</td>
                     </tr>
-
                     <tr style="background-color: #f0f4ff;">
                         <td><strong>RCE-LLM</strong></td>
                         <td>3</td>
@@ -599,19 +589,17 @@
                 <tbody>
 
                     <tr>
-                        <td><strong>LLM</strong></td>
-                        <td>1</td>
-                        <td>3</td>
-                        <td class="accuracy-low">33.3%</td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>LLM+RAG</strong></td>
+                        <td><strong>LLM (Groq)</strong></td>
                         <td>2</td>
                         <td>3</td>
                         <td class="accuracy-medium">66.7%</td>
                     </tr>
-
+                    <tr>
+                        <td><strong>LLM+RAG</strong></td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td class="accuracy-high">100.0%</td>
+                    </tr>
                     <tr style="background-color: #f0f4ff;">
                         <td><strong>RCE-LLM</strong></td>
                         <td>3</td>
@@ -671,7 +659,7 @@
             <div class="pipeline-stage">
                 <h3>Stage 3: LLM Generation</h3>
                 <p><strong>Input:</strong> Validated knowledge</p>
-                <p><strong>Process:</strong> Answer synthesis using LLM (Llama 3.2)</p>
+                <p><strong>Process:</strong> Answer synthesis using LLM (Groq (Llama 3.3 70B))</p>
                 <p><strong>Output:</strong> Final answer with source traceability</p>
             </div>
         </div>
@@ -731,7 +719,7 @@
             <div class="pipeline-stage">
                 <h3>🤖 Stage 3: LLM Generation</h3>
                 <p><strong>Input:</strong> Validated knowledge graph</p>
-                <p><strong>Process:</strong> Answer synthesis using Llama 3.2</p>
+                <p><strong>Process:</strong> Answer synthesis using Groq (Llama 3.3 70B)</p>
                 <p><strong>Generated Answer:</strong></p>
                 <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 10px 0; font-style: italic;">
                     "The capital of France is Paris."
@@ -824,8 +812,8 @@
             <h2>🔬 Reproducibility</h2>
             <p>All benchmarks were executed using:</p>
             <ul style="margin: 15px 0 15px 30px;">
-                <li><strong>LLM Baseline:</strong> Llama 3.2 via Ollama (no validation)</li>
-                <li><strong>LLM+RAG Baseline:</strong> Llama 3.2 + retrieval (no validation)</li>
+                <li><strong>LLM Baseline:</strong> Groq (Llama 3.3 70B) via Groq Cloud API (no validation)</li>
+                <li><strong>LLM+RAG Baseline:</strong> Groq (Llama 3.3 70B) + retrieval (no validation)</li>
                 <li><strong>RCE-LLM:</strong> Full coherence optimization with 5 modules</li>
                 <li><strong>Dataset:</strong> 30 queries across F1-F5 task families</li>
                 <li><strong>Execution Date:</strong> November 10, 2025</li>
