@@ -1,0 +1,234 @@
+{
+  "task_family": "f8_arithmetic_hallucination",
+  "total_queries": 5,
+  "queries": [
+    {
+      "query_id": "f8_001",
+      "query_text": "Start with 1000. Add 234. Multiply by 3. Subtract 1500. Divide by 2. What's the result?",
+      "expected_answer": "102",
+      "domain": "arithmetic",
+      "task_family": "f8_arithmetic_hallucination",
+      "systems": [
+        {
+          "system": "LLM",
+          "response": "To find the result, we'll follow the order of operations:\n\n1. Start with 1000.\n2. Add 234: 1000 + 234 = 1234\n3. Multiply by 3: 1234 * 3 = 3702\n4. Subtract 1500: 3702 - 1500 = 2202\n5. Divide by 2: 2202 / 2 = 1101\n\nThe result is 1101.",
+          "execution_time": 38.9893057346344,
+          "success": true,
+          "coherence_score": null,
+          "error": null,
+          "correct": false
+        },
+        {
+          "system": "LLM+RAG",
+          "response": "To find the result, we'll perform the operations in order:\n\n1. Start with 1000\n2. Add 234: 1000 + 234 = 1234\n3. Multiply by 3: 1234 * 3 = 3696\n4. Subtract 1500: 3696 - 1500 = 2196\n5. Divide by 2: 2196 / 2 = 1098\n\nThe result is 1098.",
+          "execution_time": 42.68568205833435,
+          "success": true,
+          "coherence_score": null,
+          "retrieval_enabled": true,
+          "error": null,
+          "correct": false
+        },
+        {
+          "system": "RCE-LLM",
+          "response": "To find the result, follow the order of operations:\n\n1. Start with 1000.\n2. Add 234: 1000 + 234 = 1234.\n3. Multiply by 3: 1234 * 3 = 3702.\n4. Subtract 1500: 3702 - 1500 = 2202.\n5. Divide by 2: 2202 / 2 = 1101.\n\nThe result is 1101.",
+          "execution_time": 1.1252260208129883,
+          "success": true,
+          "coherence_score": 1.0,
+          "coherence_modules": [
+            "units",
+            "temporal",
+            "arithmetic",
+            "coreference",
+            "entailment"
+          ],
+          "pipeline_trace": null,
+          "error": null,
+          "correct": false
+        }
+      ]
+    },
+    {
+      "query_id": "f8_002",
+      "query_text": "Calculate: (456 + 789) \u00d7 2 - 300 \u00f7 5",
+      "expected_answer": "2430",
+      "domain": "arithmetic",
+      "task_family": "f8_arithmetic_hallucination",
+      "systems": [
+        {
+          "system": "LLM",
+          "response": "To calculate the expression, we need to follow the order of operations (PEMDAS):\n\n1. Calculate the expressions inside the parentheses:\n   456 + 789 = 1245\n\n2. Multiply 1245 by 2:\n   1245 \u00d7 2 = 2490\n\n3. Divide 300 by 5:\n   300 \u00f7 5 = 60\n\n4. Subtract 60 from 2490:\n   2490 - 60 = 2430\n\nSo, the final result is: 2430",
+          "execution_time": 41.719974994659424,
+          "success": true,
+          "coherence_score": null,
+          "error": null,
+          "correct": true
+        },
+        {
+          "system": "LLM+RAG",
+          "response": "To calculate the expression, we need to follow the order of operations (PEMDAS):\n\n1. Evaluate the expressions inside the parentheses:\n(456 + 789) = 1245\n2. Multiply 1245 by 2:\n1245 \u00d7 2 = 2490\n3. Divide 300 by 5:\n300 \u00f7 5 = 60\n4. Subtract 60 from 2490:\n2490 - 60 = 2430\n\nThe final answer is 2430.",
+          "execution_time": 40.44606328010559,
+          "success": true,
+          "coherence_score": null,
+          "retrieval_enabled": true,
+          "error": null,
+          "correct": true
+        },
+        {
+          "system": "RCE-LLM",
+          "response": "To calculate: \n(456 + 789) = 1245\n1245 \u00d7 2 = 2490\n300 \u00f7 5 = 60\n2490 - 60 = 2430\n\nThe answer is 2430.",
+          "execution_time": 0.49198222160339355,
+          "success": true,
+          "coherence_score": 1.0,
+          "coherence_modules": [
+            "units",
+            "temporal",
+            "arithmetic",
+            "coreference",
+            "entailment"
+          ],
+          "pipeline_trace": null,
+          "error": null,
+          "correct": true
+        }
+      ]
+    },
+    {
+      "query_id": "f8_003",
+      "query_text": "If 25% of X is 150, what is 75% of X?",
+      "expected_answer": "450",
+      "domain": "arithmetic",
+      "task_family": "f8_arithmetic_hallucination",
+      "systems": [
+        {
+          "system": "LLM",
+          "response": "To find the value of X, we can set up an equation based on the given information:\n\n25% of X = 150\n\nWe can convert 25% to a decimal by dividing by 100:\n\n0.25X = 150\n\nNow, divide both sides by 0.25:\n\nX = 150 / 0.25\nX = 600\n\nNow that we know the value of X, we can find 75% of it:\n\n75% of X = 0.75 \u00d7 600\n= 450\n\nSo, 75% of X is 450.",
+          "execution_time": 51.51571607589722,
+          "success": true,
+          "coherence_score": null,
+          "error": null,
+          "correct": true
+        },
+        {
+          "system": "LLM+RAG",
+          "response": "To find the value of X, we can start by writing an equation based on the given information:\n\n25% of X = 150\n\nConverting the percentage to a decimal, we get:\n\n0.25X = 150\n\nNow, divide both sides by 0.25 to solve for X:\n\nX = 150 / 0.25\nX = 600\n\nNow that we know the value of X, we can find 75% of X:\n\n75% of X = 0.75X\n= 0.75(600)\n= 450\n\nSo, 75% of X is 450.",
+          "execution_time": 52.81868076324463,
+          "success": true,
+          "coherence_score": null,
+          "retrieval_enabled": true,
+          "error": null,
+          "correct": true
+        },
+        {
+          "system": "RCE-LLM",
+          "response": "To find X, 0.25X = 150, so X = 150 / 0.25 = 600. \n75% of X = 0.75 * 600 = 450.",
+          "execution_time": 0.9722321033477783,
+          "success": true,
+          "coherence_score": 1.0,
+          "coherence_modules": [
+            "units",
+            "temporal",
+            "arithmetic",
+            "coreference",
+            "entailment"
+          ],
+          "pipeline_trace": null,
+          "error": null,
+          "correct": true
+        }
+      ]
+    },
+    {
+      "query_id": "f8_004",
+      "query_text": "A store marks up items by 40%, then offers a 30% discount. What is the effective price change on a $100 item?",
+      "expected_answer": "98",
+      "domain": "arithmetic",
+      "task_family": "f8_arithmetic_hallucination",
+      "systems": [
+        {
+          "system": "LLM",
+          "response": "To find the effective price change, first, we need to calculate the markup and the discount separately.\n\nMarkup: 40% of $100 = 0.4 * $100 = $40\nPrice after markup: $100 + $40 = $140\n\nDiscount: 30% of $140 = 0.3 * $140 = $42\nPrice after discount: $140 - $42 = $98\n\nEffective price change = ($98 - $100) / $100 = -$2/100 = -2%\n\nThe effective price change is a decrease of 2%.",
+          "execution_time": 51.09811592102051,
+          "success": true,
+          "coherence_score": null,
+          "error": null,
+          "correct": true
+        },
+        {
+          "system": "LLM+RAG",
+          "response": null,
+          "execution_time": 60.01035404205322,
+          "success": false,
+          "coherence_score": null,
+          "error": "Command '['ollama', 'run', 'llama3.2', 'Based on web search results, answer this query: A store marks up items by 40%, then offers a 30% discount. What is the effective price change on a $100 item?']' timed out after 60 seconds",
+          "correct": false
+        },
+        {
+          "system": "RCE-LLM",
+          "response": "First, calculate the markup: $100 * 0.4 = $40. \nNew price: $100 + $40 = $140.\nThen, calculate the discount: $140 * 0.3 = $42.\nFinal price: $140 - $42 = $98.\nEffective price change: $98 - $100 = -$2.",
+          "execution_time": 0.793612003326416,
+          "success": true,
+          "coherence_score": 1.0,
+          "coherence_modules": [
+            "units",
+            "temporal",
+            "arithmetic",
+            "coreference",
+            "entailment"
+          ],
+          "pipeline_trace": null,
+          "error": null,
+          "correct": true
+        }
+      ]
+    },
+    {
+      "query_id": "f8_005",
+      "query_text": "What is 15% of 80 plus 20% of 60 minus 10% of 40?",
+      "expected_answer": "20",
+      "domain": "arithmetic",
+      "task_family": "f8_arithmetic_hallucination",
+      "systems": [
+        {
+          "system": "LLM",
+          "response": "To calculate this, we need to find the following:\n\n- 15% of 80\n- 20% of 60\n- 10% of 40\n\nThen add and subtract these values accordingly.\n\n1. 15% of 80 = 0.15 * 80 = 12\n2. 20% of 60 = 0.20 * 60 = 12\n3. 10% of 40 = 0.10 * 40 = 4\n\nNow, we'll add and subtract these values:\n\n12 + 12 - 4 = 20\n\nSo the result is 20.",
+          "execution_time": 55.098551988601685,
+          "success": true,
+          "coherence_score": null,
+          "error": null,
+          "correct": true
+        },
+        {
+          "system": "LLM+RAG",
+          "response": null,
+          "execution_time": 60.010685205459595,
+          "success": false,
+          "coherence_score": null,
+          "error": "Command '['ollama', 'run', 'llama3.2', 'Based on web search results, answer this query: What is 15% of 80 plus 20% of 60 minus 10% of 40?']' timed out after 60 seconds",
+          "correct": false
+        },
+        {
+          "system": "RCE-LLM",
+          "response": "To calculate: \n15% of 80 = 0.15 * 80 = 12\n20% of 60 = 0.20 * 60 = 12\n10% of 40 = 0.10 * 40 = 4\n12 + 12 - 4 = 20. The answer is 20.",
+          "execution_time": 0.6649026870727539,
+          "success": true,
+          "coherence_score": 0.96875,
+          "coherence_modules": [
+            "units",
+            "temporal",
+            "arithmetic",
+            "coreference",
+            "entailment"
+          ],
+          "pipeline_trace": null,
+          "error": null,
+          "correct": true
+        }
+      ]
+    }
+  ],
+  "accuracy": {
+    "LLM": 0.8,
+    "LLM+RAG": 0.4,
+    "RCE-LLM": 0.8
+  }
+}

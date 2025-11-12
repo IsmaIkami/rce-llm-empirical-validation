@@ -1,0 +1,234 @@
+{
+  "task_family": "f9_noisy_rag",
+  "total_queries": 5,
+  "queries": [
+    {
+      "query_id": "f9_001",
+      "query_text": "What is the population of Mars in 2024?",
+      "expected_answer": "0",
+      "domain": "factual",
+      "task_family": "f9_noisy_rag",
+      "systems": [
+        {
+          "system": "LLM",
+          "response": "I don't have any information on the population of Mars. In fact, it's not possible for there to be a human population on Mars yet, as there are no established settlements or cities on the planet.\n\nHowever, NASA and other space agencies have plans to send humans to Mars in the coming decades. The European Space Agency's ExoMars rover, which was launched in 2020, is currently exploring the Martian surface and searching for signs of life.\n\nBut as of now, there are no human inhabitants on Mars. If you're interested in learning more about future plans for Mars exploration or potential human settlements, I'd be happy to help!",
+          "execution_time": 52.050068855285645,
+          "success": true,
+          "coherence_score": null,
+          "error": null,
+          "correct": true
+        },
+        {
+          "system": "LLM+RAG",
+          "response": null,
+          "execution_time": 60.00932598114014,
+          "success": false,
+          "coherence_score": null,
+          "error": "Command '['ollama', 'run', 'llama3.2', 'Based on web search results, answer this query: What is the population of Mars in 2024?']' timed out after 60 seconds",
+          "correct": false
+        },
+        {
+          "system": "RCE-LLM",
+          "response": "0",
+          "execution_time": 0.31727099418640137,
+          "success": true,
+          "coherence_score": 1.0,
+          "coherence_modules": [
+            "units",
+            "temporal",
+            "arithmetic",
+            "coreference",
+            "entailment"
+          ],
+          "pipeline_trace": null,
+          "error": null,
+          "correct": true
+        }
+      ]
+    },
+    {
+      "query_id": "f9_002",
+      "query_text": "Who won the Nobel Prize in Physics in 2030?",
+      "expected_answer": "unknown",
+      "domain": "factual",
+      "task_family": "f9_noisy_rag",
+      "systems": [
+        {
+          "system": "LLM",
+          "response": "I don't have information on the Nobel Prize in Physics for 2030, as my knowledge cutoff is December 2023 and I do not have real-time information. The Nobel Prizes are announced annually by the Royal Swedish Academy of Sciences, but I do not have access to future events or announcements.",
+          "execution_time": 25.57584309577942,
+          "success": true,
+          "coherence_score": null,
+          "error": null,
+          "correct": false
+        },
+        {
+          "system": "LLM+RAG",
+          "response": "I don't have information about future events or individuals who may win a Nobel Prize in Physics in 2030, as that year has not yet occurred. My training data only goes up to December 2023, and I do not have the ability to predict future events or know who will be awarded the Nobel Prize in Physics in 2030.\n\nHowever, if you're interested in finding out about past winners of the Nobel Prize in Physics, I can certainly help with that!",
+          "execution_time": 42.64401602745056,
+          "success": true,
+          "coherence_score": null,
+          "retrieval_enabled": true,
+          "error": null,
+          "correct": false
+        },
+        {
+          "system": "RCE-LLM",
+          "response": "I don't have information about future events.",
+          "execution_time": 0.4168729782104492,
+          "success": true,
+          "coherence_score": 1.0,
+          "coherence_modules": [
+            "units",
+            "temporal",
+            "arithmetic",
+            "coreference",
+            "entailment"
+          ],
+          "pipeline_trace": null,
+          "error": null,
+          "correct": false
+        }
+      ]
+    },
+    {
+      "query_id": "f9_003",
+      "query_text": "What is the exact height of Mount Everest in nanometers?",
+      "expected_answer": "8848870000000",
+      "domain": "units",
+      "task_family": "f9_noisy_rag",
+      "systems": [
+        {
+          "system": "LLM",
+          "response": "Mount Everest's height is approximately 8,848 meters (29,029 feet) above sea level.\n\nTo convert this to nanometers, we need to know that 1 meter = 10^9 nanometers.\n\nSo, the height of Mount Everest in nanometers would be:\n\n8888000 meters x (10^9 nm/meter) = 8.884 x 10^13 nm\n\nThat's approximately 8.884 quintillion nanometers!",
+          "execution_time": 42.17645192146301,
+          "success": true,
+          "coherence_score": null,
+          "error": null,
+          "correct": false
+        },
+        {
+          "system": "LLM+RAG",
+          "response": "Mount Everest's height is approximately 8848 meters. To convert it to nanometers, we need to know that 1 meter = 10^9 nanometers.\n\nSo,\n\n8848 meters * (10^9 nanometers / 1 meter) = 8.848 * 10^12 nanometers\n\nTherefore, the exact height of Mount Everest in nanometers is approximately 8.848 * 10^12 nanometers.",
+          "execution_time": 42.16078281402588,
+          "success": true,
+          "coherence_score": null,
+          "retrieval_enabled": true,
+          "error": null,
+          "correct": false
+        },
+        {
+          "system": "RCE-LLM",
+          "response": "Mount Everest's height is 8848 meters. \n1 meter = 1,000,000,000 nanometers. \nSo, 8848 meters = 8,848,000,000,000 nanometers.",
+          "execution_time": 0.8254690170288086,
+          "success": true,
+          "coherence_score": 0.9999999999999998,
+          "coherence_modules": [
+            "units",
+            "temporal",
+            "arithmetic",
+            "coreference",
+            "entailment"
+          ],
+          "pipeline_trace": null,
+          "error": null,
+          "correct": false
+        }
+      ]
+    },
+    {
+      "query_id": "f9_004",
+      "query_text": "According to the Constitution, what is the minimum age to become President of Mars?",
+      "expected_answer": "undefined",
+      "domain": "factual",
+      "task_family": "f9_noisy_rag",
+      "systems": [
+        {
+          "system": "LLM",
+          "response": "There is no provision in the United States Constitution that addresses the minimum age for becoming the President of Mars. In fact, there is no government or president of Mars, as it is a planet and not a sovereign nation with its own government.\n\nThe United States Constitution only applies to the federal government of the United States and does not have any provisions related to the governance of other planets or celestial bodies.\n\nIf you're interested in learning about the potential for governance on Mars, there are ongoing efforts by various space agencies and organizations to establish a human settlement and potentially create a form of governance for a Martian society. However, these efforts are still in development and do not have any concrete plans or laws governing the presidency of Mars at present.",
+          "execution_time": 50.707358837127686,
+          "success": true,
+          "coherence_score": null,
+          "error": null,
+          "correct": false
+        },
+        {
+          "system": "LLM+RAG",
+          "response": "There is no information available on the Constitution of Mars, as there is no established government or legal framework for a country called Mars. Mars is a planet in our solar system that has not been colonized or inhabited by humans at a level that would require a functioning government or constitution.\n\nWhile there have been numerous robotic missions to Mars and several plans for manned exploration and potential colonization, none of these efforts have resulted in the establishment of a human settlement or a governing body with a constitution.\n\nTherefore, it is not possible to determine a minimum age requirement to become President of Mars based on the Constitution, as no such document exists.",
+          "execution_time": 53.49676585197449,
+          "success": true,
+          "coherence_score": null,
+          "retrieval_enabled": true,
+          "error": null,
+          "correct": false
+        },
+        {
+          "system": "RCE-LLM",
+          "response": "There is no Constitution for Mars, as it is not a sovereign state. The Constitution refers to the United States.",
+          "execution_time": 0.454085111618042,
+          "success": true,
+          "coherence_score": 1.0,
+          "coherence_modules": [
+            "units",
+            "temporal",
+            "arithmetic",
+            "coreference",
+            "entailment"
+          ],
+          "pipeline_trace": null,
+          "error": null,
+          "correct": false
+        }
+      ]
+    },
+    {
+      "query_id": "f9_005",
+      "query_text": "How many moons does Earth have that are larger than 1000km in diameter?",
+      "expected_answer": "1",
+      "domain": "factual",
+      "task_family": "f9_noisy_rag",
+      "systems": [
+        {
+          "system": "LLM",
+          "response": "Earth has one moon, and its diameter is approximately 3,475 kilometers (2,159 miles). This diameter is greater than 1,000 km.",
+          "execution_time": 19.519967794418335,
+          "success": true,
+          "coherence_score": null,
+          "error": null,
+          "correct": true
+        },
+        {
+          "system": "LLM+RAG",
+          "response": null,
+          "execution_time": 60.01143717765808,
+          "success": false,
+          "coherence_score": null,
+          "error": "Command '['ollama', 'run', 'llama3.2', 'Based on web search results, answer this query: How many moons does Earth have that are larger than 1000km in diameter?']' timed out after 60 seconds",
+          "correct": false
+        },
+        {
+          "system": "RCE-LLM",
+          "response": "1",
+          "execution_time": 0.37476086616516113,
+          "success": true,
+          "coherence_score": 1.0,
+          "coherence_modules": [
+            "units",
+            "temporal",
+            "arithmetic",
+            "coreference",
+            "entailment"
+          ],
+          "pipeline_trace": null,
+          "error": null,
+          "correct": true
+        }
+      ]
+    }
+  ],
+  "accuracy": {
+    "LLM": 0.4,
+    "LLM+RAG": 0.0,
+    "RCE-LLM": 0.4
+  }
+}

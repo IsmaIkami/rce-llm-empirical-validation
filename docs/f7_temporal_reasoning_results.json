@@ -1,0 +1,233 @@
+{
+  "task_family": "f7_temporal_reasoning",
+  "total_queries": 5,
+  "queries": [
+    {
+      "query_id": "f7_001",
+      "query_text": "A meeting starts at 3 PM and lasts 5 hours. Another meeting at 7 PM must end before the first meeting finishes. Is this possible?",
+      "expected_answer": "no",
+      "domain": "temporal",
+      "task_family": "f7_temporal_reasoning",
+      "systems": [
+        {
+          "system": "LLM",
+          "response": null,
+          "execution_time": 60.00970506668091,
+          "success": false,
+          "coherence_score": null,
+          "error": "Command '['ollama', 'run', 'llama3.2', 'A meeting starts at 3 PM and lasts 5 hours. Another meeting at 7 PM must end before the first meeting finishes. Is this possible?']' timed out after 60 seconds",
+          "correct": false
+        },
+        {
+          "system": "LLM+RAG",
+          "response": "Yes, it is possible for the two meetings to take place simultaneously.\n\nSince the first meeting starts at 3 PM and lasts for 5 hours, it will end at 8 PM.\n\nThe second meeting starts at 7 PM and lasts an unspecified amount of time. Since it must end before the first meeting finishes (at 8 PM), it can start as early as 1 PM to ensure that it ends by 8 PM.\n\nSo, yes, both meetings can occur simultaneously within this timeframe.",
+          "execution_time": 40.944188833236694,
+          "success": true,
+          "coherence_score": null,
+          "retrieval_enabled": true,
+          "error": null,
+          "correct": false
+        },
+        {
+          "system": "RCE-LLM",
+          "response": "The first meeting ends at 8 PM. The second meeting starts at 7 PM, so it can end before 8 PM. Yes.",
+          "execution_time": 0.610602855682373,
+          "success": true,
+          "coherence_score": 1.0,
+          "coherence_modules": [
+            "units",
+            "temporal",
+            "arithmetic",
+            "coreference",
+            "entailment"
+          ],
+          "pipeline_trace": null,
+          "error": null,
+          "correct": false
+        }
+      ]
+    },
+    {
+      "query_id": "f7_002",
+      "query_text": "Event A is scheduled for 2:00 PM. Event B must happen before Event A and after 2:30 PM. Is this timeline possible?",
+      "expected_answer": "no",
+      "domain": "temporal",
+      "task_family": "f7_temporal_reasoning",
+      "systems": [
+        {
+          "system": "LLM",
+          "response": "Yes, it is possible to have a timeline that meets the conditions.\n\nHere's one possible solution:\n\nEvent B starts at 2:20 PM\nEvent B ends at 2:25 PM (just before Event A starts)\n\nIn this scenario, Event B happens before Event A and after 2:30 PM, as required.",
+          "execution_time": 29.96407699584961,
+          "success": true,
+          "coherence_score": null,
+          "error": null,
+          "correct": false
+        },
+        {
+          "system": "LLM+RAG",
+          "response": null,
+          "execution_time": 60.00978922843933,
+          "success": false,
+          "coherence_score": null,
+          "error": "Command '['ollama', 'run', 'llama3.2', 'Based on web search results, answer this query: Event A is scheduled for 2:00 PM. Event B must happen before Event A and after 2:30 PM. Is this timeline possible?']' timed out after 60 seconds",
+          "correct": false
+        },
+        {
+          "system": "RCE-LLM",
+          "response": "No.",
+          "execution_time": 0.7284739017486572,
+          "success": true,
+          "coherence_score": 1.0,
+          "coherence_modules": [
+            "units",
+            "temporal",
+            "arithmetic",
+            "coreference",
+            "entailment"
+          ],
+          "pipeline_trace": null,
+          "error": null,
+          "correct": true
+        }
+      ]
+    },
+    {
+      "query_id": "f7_003",
+      "query_text": "A flight departs at 10 AM and arrives at 9 AM the same day. Is this possible without time zones?",
+      "expected_answer": "no",
+      "domain": "temporal",
+      "task_family": "f7_temporal_reasoning",
+      "systems": [
+        {
+          "system": "LLM",
+          "response": "No, it is not possible for a flight to depart at 10 AM and arrive at 9 AM on the same day without considering time zones.\n\nThe concept of time zones allows us to account for the fact that different regions on Earth have slightly different times due to their longitudinal position. If we were only dealing with standard time, which assumes a uniform time across all locations regardless of location or daylight saving adjustments, it would not be possible for the flight to depart at 10 AM and arrive at 9 AM.\n\nHowever, if we consider the possibility of time zones, it's likely that the departure and arrival times are actually meant to refer to different standard time zones, rather than different local times on the same day.",
+          "execution_time": 52.254655838012695,
+          "success": true,
+          "coherence_score": null,
+          "error": null,
+          "correct": true
+        },
+        {
+          "system": "LLM+RAG",
+          "response": null,
+          "execution_time": 60.009785890579224,
+          "success": false,
+          "coherence_score": null,
+          "error": "Command '['ollama', 'run', 'llama3.2', 'Based on web search results, answer this query: A flight departs at 10 AM and arrives at 9 AM the same day. Is this possible without time zones?']' timed out after 60 seconds",
+          "correct": false
+        },
+        {
+          "system": "RCE-LLM",
+          "response": "No.",
+          "execution_time": 0.3901970386505127,
+          "success": true,
+          "coherence_score": 1.0,
+          "coherence_modules": [
+            "units",
+            "temporal",
+            "arithmetic",
+            "coreference",
+            "entailment"
+          ],
+          "pipeline_trace": null,
+          "error": null,
+          "correct": true
+        }
+      ]
+    },
+    {
+      "query_id": "f7_004",
+      "query_text": "Task A takes 3 hours. Task B takes 2 hours. Both must be done sequentially starting at 1 PM and finishing by 5 PM. Is this feasible?",
+      "expected_answer": "yes",
+      "domain": "temporal",
+      "task_family": "f7_temporal_reasoning",
+      "systems": [
+        {
+          "system": "LLM",
+          "response": "To determine if the tasks are feasible, let's calculate the total time required to complete both tasks:\n\nTask A: 3 hours\nTask B: 2 hours\n\nTotal time required: 3 + 2 = 5 hours\n\nSince the tasks must be completed starting at 1 PM and finishing by 5 PM, which is a total of 4 hours (from 1 PM to 5 PM), we can see that completing both tasks sequentially will not leave enough time.\n\nTask A alone would take 3 hours, and Task B alone would take 2 hours. Adding the start and end times together also does not change this - The total amount of time needed is still greater than what's available.",
+          "execution_time": 58.0573091506958,
+          "success": true,
+          "coherence_score": null,
+          "error": null,
+          "correct": false
+        },
+        {
+          "system": "LLM+RAG",
+          "response": null,
+          "execution_time": 60.0112099647522,
+          "success": false,
+          "coherence_score": null,
+          "error": "Command '['ollama', 'run', 'llama3.2', 'Based on web search results, answer this query: Task A takes 3 hours. Task B takes 2 hours. Both must be done sequentially starting at 1 PM and finishing by 5 PM. Is this feasible?']' timed out after 60 seconds",
+          "correct": false
+        },
+        {
+          "system": "RCE-LLM",
+          "response": "Total time required: 3 + 2 = 5 hours. \nStart time: 1 PM, End time: 6 PM (1 PM + 5 hours). \nSince the end time (6 PM) is after the required finish time (5 PM), no.",
+          "execution_time": 0.770313024520874,
+          "success": true,
+          "coherence_score": 1.0,
+          "coherence_modules": [
+            "units",
+            "temporal",
+            "arithmetic",
+            "coreference",
+            "entailment"
+          ],
+          "pipeline_trace": null,
+          "error": null,
+          "correct": false
+        }
+      ]
+    },
+    {
+      "query_id": "f7_005",
+      "query_text": "A process starts at 11:30 AM, takes 45 minutes, then another step takes 1 hour 20 minutes. Can it finish before 1:00 PM?",
+      "expected_answer": "no",
+      "domain": "temporal",
+      "task_family": "f7_temporal_reasoning",
+      "systems": [
+        {
+          "system": "LLM",
+          "response": "Let's break down the steps:\n\n1. The initial 45-minute step\n2. A 1-hour 20-minute step (which is equivalent to 80 minutes)\n\nTotal duration so far: 45 + 80 = 125 minutes\n\n Convert this to hours and minutes: 125 minutes \u2248 2 hours 5 minutes\n\nSince the process starts at 11:30 AM, let's add the total time:\n\n11:30 AM + 2 hours 5 minutes \u2248 1:35 PM\n\nThe answer is yes, it can finish before 1:00 PM.",
+          "execution_time": 46.04549789428711,
+          "success": true,
+          "coherence_score": null,
+          "error": null,
+          "correct": false
+        },
+        {
+          "system": "LLM+RAG",
+          "response": "To determine if the process can finish before 1:00 PM, we need to calculate the total time required.\n\nThe first step starts at 11:30 AM and takes 45 minutes, so it will end at:\n\n11:30 AM + 0:45 = 12:15 PM\n\nThe second step starts after the first step ends, which is at 12:15 PM. It takes 1 hour and 20 minutes, so it will end at:\n\n12:15 PM + 1:20 = 1:35 PM\n\nSince the second step ends at 1:35 PM, which is after 1:00 PM, the process cannot finish before 1:00 PM.",
+          "execution_time": 57.38723587989807,
+          "success": true,
+          "coherence_score": null,
+          "retrieval_enabled": true,
+          "error": null,
+          "correct": true
+        },
+        {
+          "system": "RCE-LLM",
+          "response": "The total time is 45 minutes + 80 minutes = 125 minutes. \n11:30 AM + 125 minutes = 1:35 PM. \nNo.",
+          "execution_time": 0.8321840763092041,
+          "success": true,
+          "coherence_score": 1.0,
+          "coherence_modules": [
+            "units",
+            "temporal",
+            "arithmetic",
+            "coreference",
+            "entailment"
+          ],
+          "pipeline_trace": null,
+          "error": null,
+          "correct": true
+        }
+      ]
+    }
+  ],
+  "accuracy": {
+    "LLM": 0.2,
+    "LLM+RAG": 0.2,
+    "RCE-LLM": 0.6
+  }
+}

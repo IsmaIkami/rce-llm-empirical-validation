@@ -1,0 +1,468 @@
+{
+  "metadata": {
+    "mode": "MOCKUP",
+    "author": "Ismail Sialyen",
+    "publication_doi": "10.5281/zenodo.17360372",
+    "execution_date": "2025-11-11T22:01:03.596520",
+    "total_queries": 10,
+    "systems": [
+      "LLM",
+      "LLM+RAG",
+      "RCE-LLM"
+    ]
+  },
+  "task_families": {
+    "f6_contradictory_reasoning": {
+      "task_family": "f6_contradictory_reasoning",
+      "total_queries": 5,
+      "queries": [
+        {
+          "query_id": "f6_001",
+          "query_text": "If it's not true that the medication doesn't work, does the medication work?",
+          "expected_answer": "yes",
+          "task_family": "f6_contradictory_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "Yes, the medication works. A double negative means positive.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "correct": true,
+              "error": null
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "Based on web search: double negatives create affirmation, so yes.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "correct": true,
+              "error": null
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "Yes. Double negative negation: \u00ac(\u00acworks) = works.",
+              "execution_time": 0.05,
+              "success": true,
+              "coherence_score": 0.95,
+              "coherence_modules": [
+                "mu_reason",
+                "mu_units",
+                "mu_time",
+                "mu_arith"
+              ],
+              "pipeline_trace": "Coherence validation complete: 0.95",
+              "correct": true,
+              "error": null
+            }
+          ]
+        },
+        {
+          "query_id": "f6_002",
+          "query_text": "A report states a sample weighs 500 grams. Later it says 0.5 kilograms. Is this contradictory?",
+          "expected_answer": "no",
+          "task_family": "f6_contradictory_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "These are contradictory - 500g \u2260 0.5kg",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "correct": false,
+              "error": null
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "Search results show 500g = 0.5kg, so no contradiction.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "correct": true,
+              "error": null
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "No. Unit coherence validated: 500g = 0.5kg.",
+              "execution_time": 0.05,
+              "success": true,
+              "coherence_score": 0.92,
+              "coherence_modules": [
+                "mu_reason",
+                "mu_units",
+                "mu_time",
+                "mu_arith"
+              ],
+              "pipeline_trace": "Coherence validation complete: 0.92",
+              "correct": true,
+              "error": null
+            }
+          ]
+        },
+        {
+          "query_id": "f6_003",
+          "query_text": "Statement 1: The drug reduces fever. Statement 2: The medication doesn't increase body temperature. Are these consistent?",
+          "expected_answer": "yes",
+          "task_family": "f6_contradictory_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "Yes, these statements are consistent.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "correct": true,
+              "error": null
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "Medical sources confirm both statements are compatible.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "correct": true,
+              "error": null
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "Yes. Paraphrase detection: both state temperature reduction.",
+              "execution_time": 0.05,
+              "success": true,
+              "coherence_score": 0.88,
+              "coherence_modules": [
+                "mu_reason",
+                "mu_units",
+                "mu_time",
+                "mu_arith"
+              ],
+              "pipeline_trace": "Coherence validation complete: 0.88",
+              "correct": true,
+              "error": null
+            }
+          ]
+        },
+        {
+          "query_id": "f6_004",
+          "query_text": "If it isn't the case that the system isn't secure, is the system secure?",
+          "expected_answer": "yes",
+          "task_family": "f6_contradictory_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "Yes, the system is secure.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "correct": true,
+              "error": null
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "Yes, removing two negatives results in positive.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "correct": true,
+              "error": null
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "Yes. Normalized: \u00ac(\u00acsecure) = secure.",
+              "execution_time": 0.05,
+              "success": true,
+              "coherence_score": 0.96,
+              "coherence_modules": [
+                "mu_reason",
+                "mu_units",
+                "mu_time",
+                "mu_arith"
+              ],
+              "pipeline_trace": "Coherence validation complete: 0.96",
+              "correct": true,
+              "error": null
+            }
+          ]
+        },
+        {
+          "query_id": "f6_005",
+          "query_text": "Document says: Temperature is 25\u00b0C. Later: Temperature is 77\u00b0F. Is there a contradiction?",
+          "expected_answer": "no",
+          "task_family": "f6_contradictory_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "Yes, there's a contradiction. 25\u00b0C is not 77\u00b0F.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "correct": false,
+              "error": null
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "Weather data confirms 25\u00b0C = 77\u00b0F, no contradiction.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "correct": true,
+              "error": null
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "No. Temperature conversion: 25\u00b0C = 77\u00b0F within tolerance.",
+              "execution_time": 0.05,
+              "success": true,
+              "coherence_score": 0.91,
+              "coherence_modules": [
+                "mu_reason",
+                "mu_units",
+                "mu_time",
+                "mu_arith"
+              ],
+              "pipeline_trace": "Coherence validation complete: 0.91",
+              "correct": true,
+              "error": null
+            }
+          ]
+        }
+      ],
+      "accuracy": {
+        "LLM": 0.6,
+        "LLM+RAG": 1.0,
+        "RCE-LLM": 1.0
+      }
+    },
+    "f7_temporal_reasoning": {
+      "task_family": "f7_temporal_reasoning",
+      "total_queries": 5,
+      "queries": [
+        {
+          "query_id": "f7_001",
+          "query_text": "A meeting starts at 3 PM and lasts 5 hours. Another meeting at 7 PM must end before the first meeting finishes. Is this possible?",
+          "expected_answer": "no",
+          "task_family": "f7_temporal_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "Yes, it's possible if the second meeting is very short.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "correct": false,
+              "error": null
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "No, the first meeting ends at 8 PM, second at 7 PM cannot end before 8 PM.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "correct": true,
+              "error": null
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "No. Temporal constraint violation: Meeting 1 ends 20:00, Meeting 2 at 19:00 cannot end before 20:00.",
+              "execution_time": 0.05,
+              "success": true,
+              "coherence_score": 0.94,
+              "coherence_modules": [
+                "mu_reason",
+                "mu_units",
+                "mu_time",
+                "mu_arith"
+              ],
+              "pipeline_trace": "Coherence validation complete: 0.94",
+              "correct": true,
+              "error": null
+            }
+          ]
+        },
+        {
+          "query_id": "f7_002",
+          "query_text": "Event A is scheduled for 2:00 PM. Event B must happen before Event A and after 2:30 PM. Is this timeline possible?",
+          "expected_answer": "no",
+          "task_family": "f7_temporal_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "No, Event B cannot satisfy both conditions.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "correct": true,
+              "error": null
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "No, logically impossible.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "correct": true,
+              "error": null
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "No. Impossibility detected: Event B cannot be both before 14:00 and after 14:30.",
+              "execution_time": 0.05,
+              "success": true,
+              "coherence_score": 0.97,
+              "coherence_modules": [
+                "mu_reason",
+                "mu_units",
+                "mu_time",
+                "mu_arith"
+              ],
+              "pipeline_trace": "Coherence validation complete: 0.97",
+              "correct": true,
+              "error": null
+            }
+          ]
+        },
+        {
+          "query_id": "f7_003",
+          "query_text": "A flight departs at 10 AM and arrives at 9 AM the same day. Is this possible without time zones?",
+          "expected_answer": "no",
+          "task_family": "f7_temporal_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "No, a flight cannot arrive before it departs.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "correct": true,
+              "error": null
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "No, violates causality.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "correct": true,
+              "error": null
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "No. Causality violation: arrival time < departure time.",
+              "execution_time": 0.05,
+              "success": true,
+              "coherence_score": 0.98,
+              "coherence_modules": [
+                "mu_reason",
+                "mu_units",
+                "mu_time",
+                "mu_arith"
+              ],
+              "pipeline_trace": "Coherence validation complete: 0.98",
+              "correct": true,
+              "error": null
+            }
+          ]
+        },
+        {
+          "query_id": "f7_004",
+          "query_text": "Task A takes 3 hours. Task B takes 2 hours. Both must be done sequentially starting at 1 PM and finishing by 5 PM. Is this feasible?",
+          "expected_answer": "yes",
+          "task_family": "f7_temporal_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "Yes, 3+2=5 hours, exactly fits the timeframe.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "correct": true,
+              "error": null
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "Yes, total time = 5 hours.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "correct": true,
+              "error": null
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "Yes. Duration sum: 3h + 2h = 5h \u2264 4h window.",
+              "execution_time": 0.05,
+              "success": true,
+              "coherence_score": 0.93,
+              "coherence_modules": [
+                "mu_reason",
+                "mu_units",
+                "mu_time",
+                "mu_arith"
+              ],
+              "pipeline_trace": "Coherence validation complete: 0.93",
+              "correct": true,
+              "error": null
+            }
+          ]
+        },
+        {
+          "query_id": "f7_005",
+          "query_text": "A process starts at 11:30 AM, takes 45 minutes, then another step takes 1 hour 20 minutes. Can it finish before 1:00 PM?",
+          "expected_answer": "no",
+          "task_family": "f7_temporal_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "Let me calculate: 11:30 + 45min = 12:15, + 1h20m = 1:35 PM. No, it finishes at 1:35 PM.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "correct": true,
+              "error": null
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "No, ends at 1:35 PM which is after 1:00 PM.",
+              "execution_time": 0.1,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "correct": true,
+              "error": null
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "No. Duration chain: 11:30 + 0:45 + 1:20 = 13:35, which is after 13:00.",
+              "execution_time": 0.05,
+              "success": true,
+              "coherence_score": 0.9,
+              "coherence_modules": [
+                "mu_reason",
+                "mu_units",
+                "mu_time",
+                "mu_arith"
+              ],
+              "pipeline_trace": "Coherence validation complete: 0.90",
+              "correct": true,
+              "error": null
+            }
+          ]
+        }
+      ],
+      "accuracy": {
+        "LLM": 0.8,
+        "LLM+RAG": 1.0,
+        "RCE-LLM": 1.0
+      }
+    }
+  }
+}

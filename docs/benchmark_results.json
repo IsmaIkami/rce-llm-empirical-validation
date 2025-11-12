@@ -1,0 +1,1186 @@
+{
+  "metadata": {
+    "author": "Ismail Sialyen",
+    "publication_doi": "10.5281/zenodo.17360372",
+    "execution_date": "2025-11-12T12:38:44.344812",
+    "total_queries": 25,
+    "systems": [
+      "LLM",
+      "LLM+RAG",
+      "RCE-LLM"
+    ]
+  },
+  "task_families": {
+    "f6_contradictory_reasoning": {
+      "task_family": "f6_contradictory_reasoning",
+      "total_queries": 5,
+      "queries": [
+        {
+          "query_id": "f6_001",
+          "query_text": "If it's not true that the medication doesn't work, does the medication work?",
+          "expected_answer": "yes",
+          "domain": "logic",
+          "task_family": "f6_contradictory_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": null,
+              "execution_time": 60.01510286331177,
+              "success": false,
+              "coherence_score": null,
+              "error": "Command '['ollama', 'run', 'llama3.2', \"If it's not true that the medication doesn't work, does the medication work?\"]' timed out after 60 seconds",
+              "correct": false
+            },
+            {
+              "system": "LLM+RAG",
+              "response": null,
+              "execution_time": 60.01510405540466,
+              "success": false,
+              "coherence_score": null,
+              "error": "Command '['ollama', 'run', 'llama3.2', \"Based on web search results, answer this query: If it's not true that the medication doesn't work, does the medication work?\"]' timed out after 60 seconds",
+              "correct": false
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "Yes.",
+              "execution_time": 1.6417081356048584,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        },
+        {
+          "query_id": "f6_002",
+          "query_text": "A report states a sample weighs 500 grams. Later it says 0.5 kilograms. Is this contradictory?",
+          "expected_answer": "no",
+          "domain": "units",
+          "task_family": "f6_contradictory_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "No, the information is not contradictory. A kilogram is equal to 1000 grams.\n\nThe first statement says the sample weighs 500 grams.\nThe second statement then converts this weight to kilograms by dividing it by 1000 (since there are 1000 grams in a kilogram), which gives you 0.5 kilograms.\n\nSo, both statements can be true at the same time. The conversion is just a way of expressing the same quantity in different units.",
+              "execution_time": 32.87527108192444,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "No, this is not contradictory. In fact, the two statements are equivalent.\n\n1 kilogram is equal to 1000 grams. So if a sample weighs 500 grams, it also weighs 0.5 kilograms (since 500 \u00f7 1000 = 0.5). \n\nThis conversion between units can sometimes lead to slight variations in notation, but in this case, the two statements represent the same weight, just expressed in different units.",
+              "execution_time": 33.213719844818115,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "No. 0.5 kilograms equals 500 grams.",
+              "execution_time": 1.106208086013794,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        },
+        {
+          "query_id": "f6_003",
+          "query_text": "Statement 1: The drug reduces fever. Statement 2: The medication doesn't increase body temperature. Are these consistent?",
+          "expected_answer": "yes",
+          "domain": "medical",
+          "task_family": "f6_contradictory_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "Yes, the two statements are consistent.\n\nIf a drug reduces fever, it means that the drug helps to lower or decrease the body's temperature. This implies that the medication does not cause an increase in body temperature, which is what Statement 2 says.\n\nTherefore, both statements convey the same information from different perspectives: one states that the drug reduces fever, while the other states that the medication doesn't increase body temperature.",
+              "execution_time": 30.720812797546387,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "Yes, they are consistent.\n\nIf the statement \"The drug reduces fever\" is true, then it logically follows that the statement \"The medication doesn't increase body temperature\" is also true. If reducing fever means decreasing body temperature, then not increasing body temperature is a logical consequence of reducing fever.\n\nTherefore, both statements can be seen as equivalent and consistent with each other.",
+              "execution_time": 28.931358098983765,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "Yes.",
+              "execution_time": 0.7992289066314697,
+              "success": true,
+              "coherence_score": 0.25,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        },
+        {
+          "query_id": "f6_004",
+          "query_text": "If it isn't the case that the system isn't secure, is the system secure?",
+          "expected_answer": "yes",
+          "domain": "logic",
+          "task_family": "f6_contradictory_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": null,
+              "execution_time": 60.01080894470215,
+              "success": false,
+              "coherence_score": null,
+              "error": "Command '['ollama', 'run', 'llama3.2', \"If it isn't the case that the system isn't secure, is the system secure?\"]' timed out after 60 seconds",
+              "correct": false
+            },
+            {
+              "system": "LLM+RAG",
+              "response": null,
+              "execution_time": 60.00890398025513,
+              "success": false,
+              "coherence_score": null,
+              "error": "Command '['ollama', 'run', 'llama3.2', \"Based on web search results, answer this query: If it isn't the case that the system isn't secure, is the system secure?\"]' timed out after 60 seconds",
+              "correct": false
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "Yes.",
+              "execution_time": 0.3682680130004883,
+              "success": true,
+              "coherence_score": 0.5,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        },
+        {
+          "query_id": "f6_005",
+          "query_text": "Document says: Temperature is 25\u00b0C. Later: Temperature is 77\u00b0F. Is there a contradiction?",
+          "expected_answer": "no",
+          "domain": "units",
+          "task_family": "f6_contradictory_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "There seems to be an apparent contradiction between the two temperature values.\n\nInitially, the document states that the temperature is 25\u00b0C (Celsius).\n\nLater, it states that the temperature is 77\u00b0F (Fahrenheit). \n\nTo determine if this is a contradiction, we need to consider how Celsius and Fahrenheit are related. There's a conversion formula: \u00b0F = (\u00b0C \u00d7 9/5) + 32.\n\nUsing this formula, let's convert 25\u00b0C to Fahrenheit:\n\n\u00b0F = (25 \u00d7 9/5) + 32\n= (225/5) + 32\n\u2248 77\n\nSo, in fact, there is no contradiction. The two temperature values are equivalent when converted from Celsius to Fahrenheit.",
+              "execution_time": 49.838366985321045,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "Yes, there is a contradiction.\n\nThe first statement says the temperature is 25\u00b0C, which is equivalent to approximately 77\u00b0F (using the Celsius-Fahrenheit conversion formula).\n\nHowever, the second statement directly states that the temperature is 77\u00b0F, which contradicts the initial statement. Since both values are supposed to represent the same temperature, this apparent discrepancy indicates a potential error or inconsistency in one of the sources.",
+              "execution_time": 34.19709801673889,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "error": null,
+              "correct": false
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "No, 25\u00b0C is equal to 77\u00b0F.",
+              "execution_time": 0.5934112071990967,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        }
+      ],
+      "accuracy": {
+        "LLM": 0.6,
+        "LLM+RAG": 0.4,
+        "RCE-LLM": 1.0
+      }
+    },
+    "f7_temporal_reasoning": {
+      "task_family": "f7_temporal_reasoning",
+      "total_queries": 5,
+      "queries": [
+        {
+          "query_id": "f7_001",
+          "query_text": "A meeting starts at 3 PM and lasts 5 hours. Another meeting at 7 PM must end before the first meeting finishes. Is this possible?",
+          "expected_answer": "no",
+          "domain": "temporal",
+          "task_family": "f7_temporal_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": null,
+              "execution_time": 60.00970506668091,
+              "success": false,
+              "coherence_score": null,
+              "error": "Command '['ollama', 'run', 'llama3.2', 'A meeting starts at 3 PM and lasts 5 hours. Another meeting at 7 PM must end before the first meeting finishes. Is this possible?']' timed out after 60 seconds",
+              "correct": false
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "Yes, it is possible for the two meetings to take place simultaneously.\n\nSince the first meeting starts at 3 PM and lasts for 5 hours, it will end at 8 PM.\n\nThe second meeting starts at 7 PM and lasts an unspecified amount of time. Since it must end before the first meeting finishes (at 8 PM), it can start as early as 1 PM to ensure that it ends by 8 PM.\n\nSo, yes, both meetings can occur simultaneously within this timeframe.",
+              "execution_time": 40.944188833236694,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "error": null,
+              "correct": false
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "The first meeting ends at 8 PM. The second meeting starts at 7 PM, so it can end before 8 PM. Yes.",
+              "execution_time": 0.610602855682373,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": false
+            }
+          ]
+        },
+        {
+          "query_id": "f7_002",
+          "query_text": "Event A is scheduled for 2:00 PM. Event B must happen before Event A and after 2:30 PM. Is this timeline possible?",
+          "expected_answer": "no",
+          "domain": "temporal",
+          "task_family": "f7_temporal_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "Yes, it is possible to have a timeline that meets the conditions.\n\nHere's one possible solution:\n\nEvent B starts at 2:20 PM\nEvent B ends at 2:25 PM (just before Event A starts)\n\nIn this scenario, Event B happens before Event A and after 2:30 PM, as required.",
+              "execution_time": 29.96407699584961,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": false
+            },
+            {
+              "system": "LLM+RAG",
+              "response": null,
+              "execution_time": 60.00978922843933,
+              "success": false,
+              "coherence_score": null,
+              "error": "Command '['ollama', 'run', 'llama3.2', 'Based on web search results, answer this query: Event A is scheduled for 2:00 PM. Event B must happen before Event A and after 2:30 PM. Is this timeline possible?']' timed out after 60 seconds",
+              "correct": false
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "No.",
+              "execution_time": 0.7284739017486572,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        },
+        {
+          "query_id": "f7_003",
+          "query_text": "A flight departs at 10 AM and arrives at 9 AM the same day. Is this possible without time zones?",
+          "expected_answer": "no",
+          "domain": "temporal",
+          "task_family": "f7_temporal_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "No, it is not possible for a flight to depart at 10 AM and arrive at 9 AM on the same day without considering time zones.\n\nThe concept of time zones allows us to account for the fact that different regions on Earth have slightly different times due to their longitudinal position. If we were only dealing with standard time, which assumes a uniform time across all locations regardless of location or daylight saving adjustments, it would not be possible for the flight to depart at 10 AM and arrive at 9 AM.\n\nHowever, if we consider the possibility of time zones, it's likely that the departure and arrival times are actually meant to refer to different standard time zones, rather than different local times on the same day.",
+              "execution_time": 52.254655838012695,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "LLM+RAG",
+              "response": null,
+              "execution_time": 60.009785890579224,
+              "success": false,
+              "coherence_score": null,
+              "error": "Command '['ollama', 'run', 'llama3.2', 'Based on web search results, answer this query: A flight departs at 10 AM and arrives at 9 AM the same day. Is this possible without time zones?']' timed out after 60 seconds",
+              "correct": false
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "No.",
+              "execution_time": 0.3901970386505127,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        },
+        {
+          "query_id": "f7_004",
+          "query_text": "Task A takes 3 hours. Task B takes 2 hours. Both must be done sequentially starting at 1 PM and finishing by 5 PM. Is this feasible?",
+          "expected_answer": "yes",
+          "domain": "temporal",
+          "task_family": "f7_temporal_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "To determine if the tasks are feasible, let's calculate the total time required to complete both tasks:\n\nTask A: 3 hours\nTask B: 2 hours\n\nTotal time required: 3 + 2 = 5 hours\n\nSince the tasks must be completed starting at 1 PM and finishing by 5 PM, which is a total of 4 hours (from 1 PM to 5 PM), we can see that completing both tasks sequentially will not leave enough time.\n\nTask A alone would take 3 hours, and Task B alone would take 2 hours. Adding the start and end times together also does not change this - The total amount of time needed is still greater than what's available.",
+              "execution_time": 58.0573091506958,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": false
+            },
+            {
+              "system": "LLM+RAG",
+              "response": null,
+              "execution_time": 60.0112099647522,
+              "success": false,
+              "coherence_score": null,
+              "error": "Command '['ollama', 'run', 'llama3.2', 'Based on web search results, answer this query: Task A takes 3 hours. Task B takes 2 hours. Both must be done sequentially starting at 1 PM and finishing by 5 PM. Is this feasible?']' timed out after 60 seconds",
+              "correct": false
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "Total time required: 3 + 2 = 5 hours. \nStart time: 1 PM, End time: 6 PM (1 PM + 5 hours). \nSince the end time (6 PM) is after the required finish time (5 PM), no.",
+              "execution_time": 0.770313024520874,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": false
+            }
+          ]
+        },
+        {
+          "query_id": "f7_005",
+          "query_text": "A process starts at 11:30 AM, takes 45 minutes, then another step takes 1 hour 20 minutes. Can it finish before 1:00 PM?",
+          "expected_answer": "no",
+          "domain": "temporal",
+          "task_family": "f7_temporal_reasoning",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "Let's break down the steps:\n\n1. The initial 45-minute step\n2. A 1-hour 20-minute step (which is equivalent to 80 minutes)\n\nTotal duration so far: 45 + 80 = 125 minutes\n\n Convert this to hours and minutes: 125 minutes \u2248 2 hours 5 minutes\n\nSince the process starts at 11:30 AM, let's add the total time:\n\n11:30 AM + 2 hours 5 minutes \u2248 1:35 PM\n\nThe answer is yes, it can finish before 1:00 PM.",
+              "execution_time": 46.04549789428711,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": false
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "To determine if the process can finish before 1:00 PM, we need to calculate the total time required.\n\nThe first step starts at 11:30 AM and takes 45 minutes, so it will end at:\n\n11:30 AM + 0:45 = 12:15 PM\n\nThe second step starts after the first step ends, which is at 12:15 PM. It takes 1 hour and 20 minutes, so it will end at:\n\n12:15 PM + 1:20 = 1:35 PM\n\nSince the second step ends at 1:35 PM, which is after 1:00 PM, the process cannot finish before 1:00 PM.",
+              "execution_time": 57.38723587989807,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "The total time is 45 minutes + 80 minutes = 125 minutes. \n11:30 AM + 125 minutes = 1:35 PM. \nNo.",
+              "execution_time": 0.8321840763092041,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        }
+      ],
+      "accuracy": {
+        "LLM": 0.2,
+        "LLM+RAG": 0.2,
+        "RCE-LLM": 0.6
+      }
+    },
+    "f8_arithmetic_hallucination": {
+      "task_family": "f8_arithmetic_hallucination",
+      "total_queries": 5,
+      "queries": [
+        {
+          "query_id": "f8_001",
+          "query_text": "Start with 1000. Add 234. Multiply by 3. Subtract 1500. Divide by 2. What's the result?",
+          "expected_answer": "102",
+          "domain": "arithmetic",
+          "task_family": "f8_arithmetic_hallucination",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "To find the result, we'll follow the order of operations:\n\n1. Start with 1000.\n2. Add 234: 1000 + 234 = 1234\n3. Multiply by 3: 1234 * 3 = 3702\n4. Subtract 1500: 3702 - 1500 = 2202\n5. Divide by 2: 2202 / 2 = 1101\n\nThe result is 1101.",
+              "execution_time": 38.9893057346344,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": false
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "To find the result, we'll perform the operations in order:\n\n1. Start with 1000\n2. Add 234: 1000 + 234 = 1234\n3. Multiply by 3: 1234 * 3 = 3696\n4. Subtract 1500: 3696 - 1500 = 2196\n5. Divide by 2: 2196 / 2 = 1098\n\nThe result is 1098.",
+              "execution_time": 42.68568205833435,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "error": null,
+              "correct": false
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "To find the result, follow the order of operations:\n\n1. Start with 1000.\n2. Add 234: 1000 + 234 = 1234.\n3. Multiply by 3: 1234 * 3 = 3702.\n4. Subtract 1500: 3702 - 1500 = 2202.\n5. Divide by 2: 2202 / 2 = 1101.\n\nThe result is 1101.",
+              "execution_time": 1.1252260208129883,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": false
+            }
+          ]
+        },
+        {
+          "query_id": "f8_002",
+          "query_text": "Calculate: (456 + 789) \u00d7 2 - 300 \u00f7 5",
+          "expected_answer": "2430",
+          "domain": "arithmetic",
+          "task_family": "f8_arithmetic_hallucination",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "To calculate the expression, we need to follow the order of operations (PEMDAS):\n\n1. Calculate the expressions inside the parentheses:\n   456 + 789 = 1245\n\n2. Multiply 1245 by 2:\n   1245 \u00d7 2 = 2490\n\n3. Divide 300 by 5:\n   300 \u00f7 5 = 60\n\n4. Subtract 60 from 2490:\n   2490 - 60 = 2430\n\nSo, the final result is: 2430",
+              "execution_time": 41.719974994659424,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "To calculate the expression, we need to follow the order of operations (PEMDAS):\n\n1. Evaluate the expressions inside the parentheses:\n(456 + 789) = 1245\n2. Multiply 1245 by 2:\n1245 \u00d7 2 = 2490\n3. Divide 300 by 5:\n300 \u00f7 5 = 60\n4. Subtract 60 from 2490:\n2490 - 60 = 2430\n\nThe final answer is 2430.",
+              "execution_time": 40.44606328010559,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "To calculate: \n(456 + 789) = 1245\n1245 \u00d7 2 = 2490\n300 \u00f7 5 = 60\n2490 - 60 = 2430\n\nThe answer is 2430.",
+              "execution_time": 0.49198222160339355,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        },
+        {
+          "query_id": "f8_003",
+          "query_text": "If 25% of X is 150, what is 75% of X?",
+          "expected_answer": "450",
+          "domain": "arithmetic",
+          "task_family": "f8_arithmetic_hallucination",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "To find the value of X, we can set up an equation based on the given information:\n\n25% of X = 150\n\nWe can convert 25% to a decimal by dividing by 100:\n\n0.25X = 150\n\nNow, divide both sides by 0.25:\n\nX = 150 / 0.25\nX = 600\n\nNow that we know the value of X, we can find 75% of it:\n\n75% of X = 0.75 \u00d7 600\n= 450\n\nSo, 75% of X is 450.",
+              "execution_time": 51.51571607589722,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "To find the value of X, we can start by writing an equation based on the given information:\n\n25% of X = 150\n\nConverting the percentage to a decimal, we get:\n\n0.25X = 150\n\nNow, divide both sides by 0.25 to solve for X:\n\nX = 150 / 0.25\nX = 600\n\nNow that we know the value of X, we can find 75% of X:\n\n75% of X = 0.75X\n= 0.75(600)\n= 450\n\nSo, 75% of X is 450.",
+              "execution_time": 52.81868076324463,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "To find X, 0.25X = 150, so X = 150 / 0.25 = 600. \n75% of X = 0.75 * 600 = 450.",
+              "execution_time": 0.9722321033477783,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        },
+        {
+          "query_id": "f8_004",
+          "query_text": "A store marks up items by 40%, then offers a 30% discount. What is the effective price change on a $100 item?",
+          "expected_answer": "98",
+          "domain": "arithmetic",
+          "task_family": "f8_arithmetic_hallucination",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "To find the effective price change, first, we need to calculate the markup and the discount separately.\n\nMarkup: 40% of $100 = 0.4 * $100 = $40\nPrice after markup: $100 + $40 = $140\n\nDiscount: 30% of $140 = 0.3 * $140 = $42\nPrice after discount: $140 - $42 = $98\n\nEffective price change = ($98 - $100) / $100 = -$2/100 = -2%\n\nThe effective price change is a decrease of 2%.",
+              "execution_time": 51.09811592102051,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "LLM+RAG",
+              "response": null,
+              "execution_time": 60.01035404205322,
+              "success": false,
+              "coherence_score": null,
+              "error": "Command '['ollama', 'run', 'llama3.2', 'Based on web search results, answer this query: A store marks up items by 40%, then offers a 30% discount. What is the effective price change on a $100 item?']' timed out after 60 seconds",
+              "correct": false
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "First, calculate the markup: $100 * 0.4 = $40. \nNew price: $100 + $40 = $140.\nThen, calculate the discount: $140 * 0.3 = $42.\nFinal price: $140 - $42 = $98.\nEffective price change: $98 - $100 = -$2.",
+              "execution_time": 0.793612003326416,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        },
+        {
+          "query_id": "f8_005",
+          "query_text": "What is 15% of 80 plus 20% of 60 minus 10% of 40?",
+          "expected_answer": "20",
+          "domain": "arithmetic",
+          "task_family": "f8_arithmetic_hallucination",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "To calculate this, we need to find the following:\n\n- 15% of 80\n- 20% of 60\n- 10% of 40\n\nThen add and subtract these values accordingly.\n\n1. 15% of 80 = 0.15 * 80 = 12\n2. 20% of 60 = 0.20 * 60 = 12\n3. 10% of 40 = 0.10 * 40 = 4\n\nNow, we'll add and subtract these values:\n\n12 + 12 - 4 = 20\n\nSo the result is 20.",
+              "execution_time": 55.098551988601685,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "LLM+RAG",
+              "response": null,
+              "execution_time": 60.010685205459595,
+              "success": false,
+              "coherence_score": null,
+              "error": "Command '['ollama', 'run', 'llama3.2', 'Based on web search results, answer this query: What is 15% of 80 plus 20% of 60 minus 10% of 40?']' timed out after 60 seconds",
+              "correct": false
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "To calculate: \n15% of 80 = 0.15 * 80 = 12\n20% of 60 = 0.20 * 60 = 12\n10% of 40 = 0.10 * 40 = 4\n12 + 12 - 4 = 20. The answer is 20.",
+              "execution_time": 0.6649026870727539,
+              "success": true,
+              "coherence_score": 0.96875,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        }
+      ],
+      "accuracy": {
+        "LLM": 0.8,
+        "LLM+RAG": 0.4,
+        "RCE-LLM": 0.8
+      }
+    },
+    "f9_noisy_rag": {
+      "task_family": "f9_noisy_rag",
+      "total_queries": 5,
+      "queries": [
+        {
+          "query_id": "f9_001",
+          "query_text": "What is the population of Mars in 2024?",
+          "expected_answer": "0",
+          "domain": "factual",
+          "task_family": "f9_noisy_rag",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "I don't have any information on the population of Mars. In fact, it's not possible for there to be a human population on Mars yet, as there are no established settlements or cities on the planet.\n\nHowever, NASA and other space agencies have plans to send humans to Mars in the coming decades. The European Space Agency's ExoMars rover, which was launched in 2020, is currently exploring the Martian surface and searching for signs of life.\n\nBut as of now, there are no human inhabitants on Mars. If you're interested in learning more about future plans for Mars exploration or potential human settlements, I'd be happy to help!",
+              "execution_time": 52.050068855285645,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "LLM+RAG",
+              "response": null,
+              "execution_time": 60.00932598114014,
+              "success": false,
+              "coherence_score": null,
+              "error": "Command '['ollama', 'run', 'llama3.2', 'Based on web search results, answer this query: What is the population of Mars in 2024?']' timed out after 60 seconds",
+              "correct": false
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "0",
+              "execution_time": 0.31727099418640137,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        },
+        {
+          "query_id": "f9_002",
+          "query_text": "Who won the Nobel Prize in Physics in 2030?",
+          "expected_answer": "unknown",
+          "domain": "factual",
+          "task_family": "f9_noisy_rag",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "I don't have information on the Nobel Prize in Physics for 2030, as my knowledge cutoff is December 2023 and I do not have real-time information. The Nobel Prizes are announced annually by the Royal Swedish Academy of Sciences, but I do not have access to future events or announcements.",
+              "execution_time": 25.57584309577942,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": false
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "I don't have information about future events or individuals who may win a Nobel Prize in Physics in 2030, as that year has not yet occurred. My training data only goes up to December 2023, and I do not have the ability to predict future events or know who will be awarded the Nobel Prize in Physics in 2030.\n\nHowever, if you're interested in finding out about past winners of the Nobel Prize in Physics, I can certainly help with that!",
+              "execution_time": 42.64401602745056,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "error": null,
+              "correct": false
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "I don't have information about future events.",
+              "execution_time": 0.4168729782104492,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": false
+            }
+          ]
+        },
+        {
+          "query_id": "f9_003",
+          "query_text": "What is the exact height of Mount Everest in nanometers?",
+          "expected_answer": "8848870000000",
+          "domain": "units",
+          "task_family": "f9_noisy_rag",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "Mount Everest's height is approximately 8,848 meters (29,029 feet) above sea level.\n\nTo convert this to nanometers, we need to know that 1 meter = 10^9 nanometers.\n\nSo, the height of Mount Everest in nanometers would be:\n\n8888000 meters x (10^9 nm/meter) = 8.884 x 10^13 nm\n\nThat's approximately 8.884 quintillion nanometers!",
+              "execution_time": 42.17645192146301,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": false
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "Mount Everest's height is approximately 8848 meters. To convert it to nanometers, we need to know that 1 meter = 10^9 nanometers.\n\nSo,\n\n8848 meters * (10^9 nanometers / 1 meter) = 8.848 * 10^12 nanometers\n\nTherefore, the exact height of Mount Everest in nanometers is approximately 8.848 * 10^12 nanometers.",
+              "execution_time": 42.16078281402588,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "error": null,
+              "correct": false
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "Mount Everest's height is 8848 meters. \n1 meter = 1,000,000,000 nanometers. \nSo, 8848 meters = 8,848,000,000,000 nanometers.",
+              "execution_time": 0.8254690170288086,
+              "success": true,
+              "coherence_score": 0.9999999999999998,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": false
+            }
+          ]
+        },
+        {
+          "query_id": "f9_004",
+          "query_text": "According to the Constitution, what is the minimum age to become President of Mars?",
+          "expected_answer": "undefined",
+          "domain": "factual",
+          "task_family": "f9_noisy_rag",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "There is no provision in the United States Constitution that addresses the minimum age for becoming the President of Mars. In fact, there is no government or president of Mars, as it is a planet and not a sovereign nation with its own government.\n\nThe United States Constitution only applies to the federal government of the United States and does not have any provisions related to the governance of other planets or celestial bodies.\n\nIf you're interested in learning about the potential for governance on Mars, there are ongoing efforts by various space agencies and organizations to establish a human settlement and potentially create a form of governance for a Martian society. However, these efforts are still in development and do not have any concrete plans or laws governing the presidency of Mars at present.",
+              "execution_time": 50.707358837127686,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": false
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "There is no information available on the Constitution of Mars, as there is no established government or legal framework for a country called Mars. Mars is a planet in our solar system that has not been colonized or inhabited by humans at a level that would require a functioning government or constitution.\n\nWhile there have been numerous robotic missions to Mars and several plans for manned exploration and potential colonization, none of these efforts have resulted in the establishment of a human settlement or a governing body with a constitution.\n\nTherefore, it is not possible to determine a minimum age requirement to become President of Mars based on the Constitution, as no such document exists.",
+              "execution_time": 53.49676585197449,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "error": null,
+              "correct": false
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "There is no Constitution for Mars, as it is not a sovereign state. The Constitution refers to the United States.",
+              "execution_time": 0.454085111618042,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": false
+            }
+          ]
+        },
+        {
+          "query_id": "f9_005",
+          "query_text": "How many moons does Earth have that are larger than 1000km in diameter?",
+          "expected_answer": "1",
+          "domain": "factual",
+          "task_family": "f9_noisy_rag",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "Earth has one moon, and its diameter is approximately 3,475 kilometers (2,159 miles). This diameter is greater than 1,000 km.",
+              "execution_time": 19.519967794418335,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "LLM+RAG",
+              "response": null,
+              "execution_time": 60.01143717765808,
+              "success": false,
+              "coherence_score": null,
+              "error": "Command '['ollama', 'run', 'llama3.2', 'Based on web search results, answer this query: How many moons does Earth have that are larger than 1000km in diameter?']' timed out after 60 seconds",
+              "correct": false
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "1",
+              "execution_time": 0.37476086616516113,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        }
+      ],
+      "accuracy": {
+        "LLM": 0.4,
+        "LLM+RAG": 0.0,
+        "RCE-LLM": 0.4
+      }
+    },
+    "f10_confidence_calibration": {
+      "task_family": "f10_confidence_calibration",
+      "total_queries": 5,
+      "queries": [
+        {
+          "query_id": "f10_001",
+          "query_text": "The trophy doesn't fit in the suitcase because it is too large. What is too large?",
+          "expected_answer": "the trophy",
+          "domain": "coreference",
+          "task_family": "f10_confidence_calibration",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "Since the problem states that the trophy \"doesn't fit\" and also mentions a suitcase, I'm assuming the trophy is not the main issue, but rather something else inside the suitcase.\n\nA likely explanation for why the trophy doesn't fit is that the suitcase itself is too small. This could be due to various reasons, such as:\n\n1. The suitcase was not designed to hold large or bulky items.\n2. The suitcase has been packed too tightly, making it difficult to squeeze anything else in.\n3. The trophy is being stored inside a smaller item, like a box or bag, that also fits into the suitcase.\n\nIn this case, what's truly \"too large\" might not be the trophy itself, but rather the size of the suitcase or the items packed inside it.",
+              "execution_time": 54.08623814582825,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "The query does not provide enough information to determine what exactly is too large. However, based on common experiences and general knowledge, here are a few possibilities:\n\n1. The trophy itself may be too large: It could be an oversized or uniquely shaped trophy that doesn't fit in a standard suitcase.\n2. The packaging or wrapping of the trophy might be too bulky: If the trophy is wrapped in extra padding, materials, or has an unusual shape, it might not fit in a typical suitcase.\n3. The trophy's base or stand may be too large: Some trophies come with a base or stand that adds to their overall size, making them difficult to pack into a small suitcase.\n\nWithout more specific information about the trophy or its packaging, it's challenging to provide a definitive answer.",
+              "execution_time": 54.27688193321228,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "The trophy.",
+              "execution_time": 0.33031392097473145,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        },
+        {
+          "query_id": "f10_002",
+          "query_text": "The city councilmen refused the demonstrators a permit because they feared violence. Who feared violence?",
+          "expected_answer": "the councilmen",
+          "domain": "coreference",
+          "task_family": "f10_confidence_calibration",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "According to the sentence, it was the city councilmen who feared violence. They refused the demonstrators a permit because of their concerns about potential violence.",
+              "execution_time": 14.35858416557312,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": false
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "According to the information provided, it was the city councilmen who feared violence. They refused to grant the demonstrators a permit due to their concerns about potential violence.",
+              "execution_time": 16.302815198898315,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "error": null,
+              "correct": false
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "The city councilmen.",
+              "execution_time": 0.29424381256103516,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": false
+            }
+          ]
+        },
+        {
+          "query_id": "f10_003",
+          "query_text": "A bat and ball cost $1.10 total. The bat costs $1.00 more than the ball. How much does the ball cost?",
+          "expected_answer": "0.05",
+          "domain": "arithmetic",
+          "task_family": "f10_confidence_calibration",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "Let's call the cost of the ball \"x\".\n\nSince the bat costs $1.00 more than the ball, we can set up an equation:\n\nBat + Ball = Total Cost\n$1.00 + x = $1.10\n\nTo solve for x, subtract $1.00 from both sides of the equation:\n\n$x = $1.10 - $1.00\n$x = $0.10\n\nSo, the ball costs $0.10 (10 cents).",
+              "execution_time": 37.702266216278076,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": false
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "Let's say the ball costs x dollars.\n\nSince the bat costs $1.00 more than the ball, the bat costs x + $1.00.\n\nThe total cost of the bat and ball together is $1.10.\n\nWe can set up an equation based on this information:\n\nx (ball) + (x + $1.00) (bat) = $1.10\n\nCombine like terms:\n\n2x + $1.00 = $1.10\n\nSubtract $1.00 from both sides:\n\n2x = $0.10\n\nDivide both sides by 2:\n\nx = $0.05\n\nSo, the ball costs $0.05 or 5 cents.",
+              "execution_time": 55.34762501716614,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "$0.05.",
+              "execution_time": 0.4156169891357422,
+              "success": true,
+              "coherence_score": 0.9466666666666668,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        },
+        {
+          "query_id": "f10_004",
+          "query_text": "If 5 machines take 5 minutes to make 5 widgets, how long would it take 100 machines to make 100 widgets?",
+          "expected_answer": "5",
+          "domain": "arithmetic",
+          "task_family": "f10_confidence_calibration",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "To solve this problem, we need to understand the relationship between the number of machines and the time required.\n\nIn this case, if 5 machines take 5 minutes to produce 5 widgets, then each machine takes 1 minute to produce 1 widget. \n\nIf there are now 100 machines, it would still take 1 minute for each machine to make a widget. So, even with 100 times more machines, the time required remains the same - 1 minute per widget.\n\nTherefore, 100 machines would also require 100 minutes (or 1 hour and 40 minutes) to produce 100 widgets, assuming that each machine works continuously and there are no other limiting factors.",
+              "execution_time": 47.84935903549194,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "According to the principle of proportionality, if 5 machines can produce 5 widgets in 5 minutes, then 1 machine can produce 1 widget in 5 minutes.\n\nIf we have 100 machines, and each machine can produce 1 widget in 5 minutes, it would take 100 machines 5 minutes to produce 100 widgets.",
+              "execution_time": 37.88646697998047,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "5 minutes.",
+              "execution_time": 0.42650389671325684,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        },
+        {
+          "query_id": "f10_005",
+          "query_text": "In a lake, there is a patch of lily pads. Every day, the patch doubles in size. If it takes 48 days for the patch to cover the entire lake, how long would it take for the patch to cover half the lake?",
+          "expected_answer": "47",
+          "domain": "arithmetic",
+          "task_family": "f10_confidence_calibration",
+          "systems": [
+            {
+              "system": "LLM",
+              "response": "If the patch doubles in size every day and covers the entire lake on the 48th day, then on the previous day (day 47), the patch must have covered half the lake.\n\nThis is because if the patch doubles in size and still covers the entire lake after doubling, it means that before doubling, the patch was half the size of the whole lake. \n\nSo, if it takes 48 days for the patch to cover the entire lake, it would take 47 days for the patch to cover half the lake.",
+              "execution_time": 54.07038116455078,
+              "success": true,
+              "coherence_score": null,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "LLM+RAG",
+              "response": "The key to solving this problem lies in understanding that if the patch doubles every day, it will reach half its maximum size on the day before it reaches its full size.\n\nSince the patch covers the entire lake after 48 days, it must have covered half of it on the 47th day. This is because the next day (day 48), it will double in size and cover the entire lake.\n\nTherefore, it would take 47 days for the patch to cover half of the lake.",
+              "execution_time": 48.70693302154541,
+              "success": true,
+              "coherence_score": null,
+              "retrieval_enabled": true,
+              "error": null,
+              "correct": true
+            },
+            {
+              "system": "RCE-LLM",
+              "response": "47 days.",
+              "execution_time": 0.4815549850463867,
+              "success": true,
+              "coherence_score": 1.0,
+              "coherence_modules": [
+                "units",
+                "temporal",
+                "arithmetic",
+                "coreference",
+                "entailment"
+              ],
+              "pipeline_trace": null,
+              "error": null,
+              "correct": true
+            }
+          ]
+        }
+      ],
+      "accuracy": {
+        "LLM": 0.6,
+        "LLM+RAG": 0.8,
+        "RCE-LLM": 0.8
+      }
+    }
+  }
+}
