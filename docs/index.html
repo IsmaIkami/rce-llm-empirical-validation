@@ -519,14 +519,35 @@
             <h2 style="color: var(--secondary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px;">Live Pipeline Trace Example</h2>
 
             <div style="background: #e7f3ff; padding: 20px; border-left: 4px solid var(--secondary-color); margin: 20px 0;">
-                <p><strong>Query:</strong> "The trophy doesn't fit in the suitcase because it is too large. What is 'it'?"</p>
+                <p><strong>Query:</strong> "The trophy doesn't fit in the suitcase because it is too large. What is too large?"</p>
                 <p><strong>Domain:</strong> Coreference Resolution</p>
+                <p><strong>Expected Answer:</strong> "the trophy"</p>
+            </div>
+
+            <h3 style="color: var(--primary-color); margin-top: 25px;">🔤 Stage 0: Tokenization & Harmonization</h3>
+            <div style="margin-left: 20px; line-height: 1.8;">
+                <p><strong>Input:</strong> Raw query string</p>
+                <p><strong>Process:</strong> Linguistic preprocessing and normalization</p>
+                <p><strong>Operations:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Tokenization: Sentence and word-level segmentation</li>
+                    <li>POS Tagging: Part-of-speech identification</li>
+                    <li>Lemmatization: Base form reduction</li>
+                    <li>Dependency Parsing: Syntactic structure extraction</li>
+                </ul>
+                <p><strong>Output:</strong> Normalized linguistic representation</p>
+                <p><strong>Metrics:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>Tokens processed: 17</li>
+                    <li>Processing time: ~50 ms</li>
+                    <li>✓ Status: Completed</li>
+                </ul>
             </div>
 
             <h3 style="color: var(--primary-color); margin-top: 25px;">⚙️ Stage 1: Information Retrieval</h3>
             <div style="margin-left: 20px; line-height: 1.8;">
-                <p><strong>Input:</strong> "The trophy doesn't fit in the suitcase because it is too large. What is 'it'?"</p>
-                <p><strong>Process:</strong> Extract semantic facts from query using spaCy NLP pipeline</p>
+                <p><strong>Input:</strong> Tokenized and harmonized query</p>
+                <p><strong>Process:</strong> Extract semantic facts using spaCy NLP pipeline</p>
                 <p><strong>Retrieved Facts:</strong></p>
                 <ul style="margin-left: 20px; line-height: 1.8;">
                     <li>Entity 1: "trophy" (OBJECT)</li>
@@ -539,7 +560,7 @@
                 <ul style="margin-left: 20px;">
                     <li>Entities extracted: 2</li>
                     <li>Relations identified: 2</li>
-                    <li>Retrieval time: 245 ms</li>
+                    <li>Retrieval time: ~80 ms</li>
                     <li>✓ Status: Completed</li>
                 </ul>
             </div>
@@ -563,7 +584,7 @@
                 <p><strong>Metrics:</strong></p>
                 <ul style="margin-left: 20px;">
                     <li>Overall coherence: 1.0</li>
-                    <li>Validation time: 85 ms</li>
+                    <li>Validation time: ~100 ms</li>
                     <li>✓ Status: Coherent</li>
                 </ul>
             </div>
@@ -576,14 +597,14 @@
                 <p><strong>Reasoning:</strong> Based on coreference resolution, "it" refers to the subject that is "too large" - the trophy fits this constraint since a large trophy wouldn't fit in a suitcase.</p>
                 <p><strong>Metrics:</strong></p>
                 <ul style="margin-left: 20px;">
-                    <li>Generation time: 245 ms</li>
+                    <li>Generation time: ~100 ms</li>
                     <li>Token count: 3</li>
                     <li>✓ Status: Completed</li>
                 </ul>
             </div>
 
             <div style="margin-top: 30px; background: white; padding: 25px; border-radius: 8px; border: 2px solid var(--success-color);">
-                <h3 style="color: var(--success-color); margin-bottom: 15px;">📊 Final Metrics</h3>
+                <h3 style="color: var(--success-color); margin-bottom: 15px;">📊 Final Metrics (F10 Query 001 - Actual Benchmark)</h3>
                 <table style="width: 100%; background: white;">
                     <tr>
                         <td><strong>Total Execution Time:</strong></td>
@@ -599,7 +620,7 @@
                     </tr>
                     <tr>
                         <td><strong>Expected Answer:</strong></td>
-                        <td>"trophy"</td>
+                        <td>"the trophy"</td>
                     </tr>
                     <tr style="background: var(--bg-color);">
                         <td colspan="2"><strong>Baseline Comparisons:</strong></td>
@@ -614,7 +635,7 @@
                     </tr>
                     <tr style="background: #d4edda;">
                         <td><strong>RCE-LLM Advantage:</strong></td>
-                        <td><span style="color: var(--success-color); font-weight: bold;">164x faster + semantic validation</span></td>
+                        <td><span style="color: var(--success-color); font-weight: bold;">164× faster + semantic validation</span></td>
                     </tr>
                 </table>
             </div>
@@ -761,9 +782,6 @@
                 </a>
                 <a href="benchmark_results.json" download style="display: block; padding: 20px; background: var(--warning-color); color: white; text-decoration: none; border-radius: 8px; text-align: center; font-weight: bold; transition: background 0.3s;">
                     💾 Download Results
-                </a>
-                <a href="https://ismaikami.github.io/rce-scientific-evidence/" target="_blank" style="display: block; padding: 20px; background: var(--primary-color); color: white; text-decoration: none; border-radius: 8px; text-align: center; font-weight: bold; transition: background 0.3s;">
-                    🔬 RCE Framework
                 </a>
             </div>
         </div>
