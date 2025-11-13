@@ -637,6 +637,11 @@
                         <td><strong>RCE-LLM Advantage:</strong></td>
                         <td><span style="color: var(--success-color); font-weight: bold;">164× faster + semantic validation</span></td>
                     </tr>
+                    <tr>
+                        <td colspan="2" style="padding: 15px; background: #f8f9fa; font-size: 0.9em; border-left: 3px solid var(--primary-color);">
+                            <strong>Note on speedup:</strong> The 164× speed advantage comes from RCE's sparse graph-based architecture (O(|R|d)) versus transformer's quadratic attention (O(n²d)), where |R| ≪ n². RCE processes sparse relational structures instead of dense token-to-token attention, fundamentally reducing computational complexity.
+                        </td>
+                    </tr>
                 </table>
             </div>
         </div>
